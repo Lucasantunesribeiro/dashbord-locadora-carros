@@ -1,0 +1,552 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Estilo geral do corpo */
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  padding: 0;
+  margin: 0;
+}
+
+/* Cabeçalho */
+header {
+  background: linear-gradient(90deg, #003366, #0056b3);
+  color: #fff;
+  padding: 20px 30px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.header__title {
+  margin: 0;
+  font-size: 2.5em;
+  font-weight: 600;
+}
+
+/* Navegação */
+.navbar {
+  margin-top: 80px; /* Ajuste para não sobrepor o cabeçalho fixo */
+  text-align: center;
+}
+
+.navbar__menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.navbar__item {
+  margin: 0;
+}
+
+.navbar__link {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s, border-bottom 0.3s;
+  padding-bottom: 5px;
+  border-bottom: 2px solid transparent;
+}
+
+.navbar__link:hover {
+  color: #d0e0f0;
+  border-bottom: 2px solid #d0e0f0;
+}
+
+/* Conteúdo Principal */
+main {
+  padding: 80px 20px 20px; /* Ajuste para não sobrepor o cabeçalho fixo */
+  max-width: 1200px;
+  margin: auto;
+}
+
+.section {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  margin: 30px 0;
+}
+
+.section__title {
+  margin-top: 0;
+  color: #007bff;
+  font-size: 2em;
+  font-weight: 600;
+}
+
+.section__content {
+  color: #555;
+  line-height: 1.6;
+}
+
+/* Rodapé */
+footer {
+  background: #003366;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo do formulário */
+form {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 25px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 5px;
+  color: #0056b3;
+}
+
+form input[type="text"],
+form input[type="number"],
+form select {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+form input[type="text"]:focus,
+form input[type="number"]:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+form button {
+  background: #003366;
+  color: #fff;
+  border: none;
+  padding: 15px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.3s;
+}
+
+form button:hover {
+  background: #0056b3;
+}
+
+form p {
+  text-align: center;
+  color: red;
+}
+
+/* Estilo das tabelas */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+th, td {
+  padding: 15px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+th {
+  background-color: #007bff;
+  color: #fff;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Estilo da paginação */
+.pagination {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.pagination a {
+  display: inline-block;
+  padding: 10px 15px;
+  margin: 0 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  text-decoration: none;
+  color: #007bff;
+  font-size: 1rem;
+}
+
+.pagination a.active {
+  background-color: #007bff;
+  color: #fff;
+  border: 1px solid #007bff;
+}
+
+.pagination a:hover {
+  background-color: #e9ecef;
+  color: #0056b3;
+}
+
+/* Botões */
+button, .btn-voltar {
+  padding: 12px 18px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+button:hover, .btn-voltar:hover {
+  background-color: #0056b3;
+}
+
+/* Estilos específicos de páginas */
+.login-body, .create-user-body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f0f2f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.login-container, .create-user-container {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-title, .create-user-title {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.login-form, .create-user-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-input, .form-input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.login-input:focus, .form-input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.login-button, .create-user-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 10px;
+}
+
+.login-button:hover, .create-user-button:hover {
+  background-color: #0056b3;
+}
+
+.create-user-form .form-group {
+  margin-bottom: 15px;
+}
+
+.create-user-form .form-label {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 5px;
+  display: block;
+}
+
+/* Containers de páginas específicas */
+.container-detalhar, .container-deletar {
+  padding-top: 10em;
+}
+
+.container_principal{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 3em;
+}
+
+button, .btn-voltar {
+  padding: 12px 18px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.btn-voltar {
+  margin-top: 20px;
+  text-align: center;
+  width: 100%;
+  display: block;
+  text-decoration: none;
+  color: #fff;
+  font-size: 1rem;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  transition: background-color 0.3s;
+}
+
+button:hover, .btn-voltar:hover {
+  background-color: #0056b3;
+}
+
+.btn-criar{
+  padding: 12px 18px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s, border-color 0.3s;
+  width: 100%;
+  margin-top: 1em;
+}
+
+
+.container_titulo{
+  font-size: 2rem;
+  margin-top: 0.1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.container_criar-carro{
+  margin-top: 5em;
+  width: 100%;
+}
+
+.container_listar-carro{
+  margin-top: 7em;
+  width: 100%;
+}
+
+legend{
+  font-size: 1.1rem;
+  color: #333;
+  padding: 0 0.5em;
+}
+
+.container-fieldset{
+  padding: 1em;
+  border: 2px solid #007bff;
+}
+
+/* Estilo base para o container dos checkboxes */
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  padding-top: 0.5em;
+}
+
+/* Ocultar checkbox padrão */
+.checkbox-container input[type="checkbox"] {
+  opacity: 0;
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+/* Estilo personalizado para o checkbox */
+.checkbox-container label {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding-left: 35px; /* Espaço para o ícone do checkbox */
+  cursor: pointer;
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Criar o "quadrado" do checkbox */
+.checkbox-container label::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  border: 2px solid #007bff;
+  border-radius: 4px;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+/* Estilo para o checkbox ativado */
+.checkbox-container input[type="checkbox"]:checked + label::before {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+/* Criar o "checkmark" dentro do checkbox */
+.checkbox-container label::after {
+  content: '\2714'; /* Símbolo de checkmark Unicode */
+  position: absolute;
+  left: 6px;
+  top: 45%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* Mostrar o "checkmark" quando o checkbox está ativado */
+.checkbox-container input[type="checkbox"]:checked + label::after {
+  opacity: 1;
+}
+
+.pagination{
+  margin: 3em 0;
+}
+
+.aluguel-titulo{
+  text-align: center;
+}
+
+
+/* Estilo para os campos de entrada do tipo date */
+input[type="date"] {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+/* Estilo para o campo de entrada do tipo date quando focado */
+input[type="date"]:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+/* Estilo para os labels dos campos de data */
+label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 5px;
+  color: #0056b3;
+}
+
+/* Responsividade para os campos de data */
+@media (max-width: 768px) {
+  input[type="date"] {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+
+  label {
+    font-size: 0.9rem;
+  }
+}
+
+.container-deletar{
+  margin-top: 5em;
+}
+
+.btn-deletar {
+  padding: 12px 18px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s, border-color 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+  text-align: center;
+  width: 45%;
+  margin: 0 25%;
+}
+
+.btn-deletar:hover {
+  background-color: #0056b3;
+}
+
+.container_listagem-user{
+  margin-top: 5em;
+}
+
+.container-deletar{
+  margin-top: 0.5em;
+}
+
+.container-deletar_titulo{
+  font-size: 2rem;
+  margin-top: 0.1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
