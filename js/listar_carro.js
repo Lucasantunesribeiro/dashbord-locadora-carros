@@ -9,18 +9,38 @@ document.addEventListener('DOMContentLoaded', function() {
         const formData = new FormData(form);
         const queryString = new URLSearchParams(formData).toString();
 
-        fetch(`/locadora_de_carros/src/routes/api/listar_carro.php?${queryString}`)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
+        // Simulação da resposta do servidor
+        const mockResponse = {
+            carros: [
+                {
+                    id: 1,
+                    modelo: 'Fusca',
+                    marca: 'Volkswagen',
+                    ano: '1970',
+                    cor: 'Azul',
+                    placa: 'ABC-1234',
+                    diaria: 100.00,
+                    disponibilidade: 'Disponível'
+                },
+                {
+                    id: 2,
+                    modelo: 'Civic',
+                    marca: 'Honda',
+                    ano: '2022',
+                    cor: 'Preto',
+                    placa: 'XYZ-5678',
+                    diaria: 150.00,
+                    disponibilidade: 'Indisponível'
                 }
-                return response.json(); // Alterado para json() em vez de text() para simplificar
-            })
-            .then(data => {
-                renderTable(data.carros);
-                renderPagination(data.totalPaginas);
-            })
-            .catch(error => console.error('Erro ao buscar carros:', error));
+            ],
+            totalPaginas: 3 // Total de páginas para a paginação
+        };
+
+        // Simula um atraso como se estivesse aguardando a resposta do servidor
+        setTimeout(() => {
+            renderTable(mockResponse.carros);
+            renderPagination(mockResponse.totalPaginas);
+        }); // 1 segundo de atraso
     }
 
     function renderTable(carros) {
@@ -59,7 +79,6 @@ document.addEventListener('DOMContentLoaded', function() {
             paginationDiv.appendChild(link);
         }
     }
-    
 
     function togglePaginationOptions() {
         paginationOptionsDiv.style.display = paginationCheckbox.checked ? 'block' : 'none';

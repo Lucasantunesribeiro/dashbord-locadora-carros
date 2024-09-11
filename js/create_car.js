@@ -1,26 +1,21 @@
 document.getElementById('create-car-form').addEventListener('submit', function (event) {
     event.preventDefault();
 
-    // const modelo = document.getElementById('modelo').value;
-    // const marca = document.getElementById('marca').value;
-    // const ano = document.getElementById('ano').value;
-    // const cor = document.getElementById('cor').value;
-    // const placa = document.getElementById('placa').value;
-    // const diaria = document.getElementById('diaria').value;
+    // Simulação da resposta do servidor
+    const mockResponse = {
+        success: true, // ou false para simular um erro
+        message: 'Carro criado com sucesso!'
+    };
 
+    // Simula um atraso como se estivesse aguardando a resposta do servidor
+    setTimeout(() => {
+        console.log('Resposta simulada do servidor:', mockResponse);
 
-    // fetch('/locadora_de_carros/src/routes/api/criacao_carro.php', {
-    //     method: 'POST',
-    //     headers: {
-    //         'Content-Type': 'application/x-www-form-urlencoded',
-    //     },
-    //     body: `modelo=${encodeURIComponent(modelo)}&marca=${encodeURIComponent(marca)}&ano=${encodeURIComponent(ano)}&cor=${encodeURIComponent(cor)}&placa=${encodeURIComponent(placa)}&diaria=${encodeURIComponent(diaria)}`,
-    // })
-    //     .then(response => response.text())
-    //     .then(data => {
-    //         alert(data);
-    //         window.location.href = 'index.php';
-    //     })
-    //     .catch(error => console.error('Erro ao criar carro:', error));
-    alert('Carro criado com sucesso!');
+        if (mockResponse.success) {
+            alert(mockResponse.message);
+            window.location.href = 'home.html'; // Redireciona após a criação
+        } else {
+            alert('Erro: ' + mockResponse.message);
+        }
+    }); // 1 segundo de atraso
 });

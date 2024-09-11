@@ -5,30 +5,24 @@ document.getElementById('create-user-form').addEventListener('submit', function(
     const email = document.getElementById('email').value;
     const senha = document.getElementById('senha').value;
 
-    fetch('/locadora_de_carros/src/routes/api/cadastro.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: new URLSearchParams({
-            nome: nome,
-            email: email,
-            senha: senha
-        })
-    })
-    .then(response => {console.log(response.json());
-        return response.json()
-    })
-    .then(data => {console.log(data);
-        if (data.status === 'success') {
-            alert(data.message); // Exibir mensagem de sucesso
-            window.location.href = '/locadora_de_carros/src/views/login.html'; // Redirecionar para a página de login
+    // Simulação da resposta do servidor
+    const mockResponse = {
+        status: 'success', // ou 'error' para simular um erro
+        message: 'Usuário criado com sucesso!' // ou mensagem de erro
+    };
+
+    // Simula um atraso como se estivesse aguardando a resposta do servidor
+    setTimeout(() => {
+        console.log('Resposta simulada do servidor:', mockResponse);
+
+        if (mockResponse.status === 'success') {
+            alert(mockResponse.message); // Exibir mensagem de sucesso
+            window.location.href = '../index.html'; // Redirecionar para a página de login
         } else {
-            alert(data.message); // Exibir mensagem de erro
-            if (data.message === 'Este email já está cadastrado.') {
-                window.location.href = '/locadora_de_carros/src/views/login.html'; // Redirecionar para login se o email já estiver cadastrado
+            alert(mockResponse.message); // Exibir mensagem de erro
+            if (mockResponse.message === 'Este email já está cadastrado.') {
+                window.location.href = '../index.html'; // Redirecionar para login se o email já estiver cadastrado
             }
         }
-    })
-    .catch(error => console.error('Erro ao criar usuário:', error));
+    }); // 1 segundo de atraso
 });

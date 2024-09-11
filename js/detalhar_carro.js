@@ -1,29 +1,78 @@
 document.addEventListener('DOMContentLoaded', () => {
     const detalharCarroBtn = document.getElementById('detalharCarroBtn');
+    const carroIdSelect = document.getElementById('carro_id');
 
     detalharCarroBtn.addEventListener('click', () => {
-        const carroId = document.getElementById('carro_id').value;
+        const carroId = carroIdSelect.value;
 
-        fetch(`/locadora_de_carros/src/routes/api/detalhar_carro.php?id=${carroId}`, {
-            method: 'GET'
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.error) {
-                alert(data.error);
-            } else {
-                const { carro, aluguéis } = data;
-                exibirDetalhesDoCarro(carro, aluguéis);
+        // Simulação da resposta do servidor para detalhes do carro
+        const mockCarros = [
+            {
+                id: 1,
+                modelo: 'Fusca',
+                marca: 'Volkswagen',
+                ano: '1970',
+                cor: 'Azul',
+                placa: 'ABC-1234',
+                diaria: 50,
+                disponibilidade: 'Disponível',
+                aluguéis: [
+                    {
+                        data_inicio: '2024-01-01',
+                        data_fim: '2024-01-05',
+                        valor_total: 250
+                    },
+                    {
+                        data_inicio: '2024-02-15',
+                        data_fim: '2024-02-20',
+                        valor_total: 300
+                    }
+                ]
+            },
+            {
+                id: 2,
+                modelo: 'Gol',
+                marca: 'Volkswagen',
+                ano: '2019',
+                cor: 'Prata',
+                placa: 'DEF-5678',
+                diaria: 80,
+                disponibilidade: 'Disponível',
+                aluguéis: []
+            },
+            {
+                id: 3,
+                modelo: 'Civic',
+                marca: 'Honda',
+                ano: '2020',
+                cor: 'Preto',
+                placa: 'GHI-9012',
+                diaria: 120,
+                disponibilidade: 'Indisponível',
+                aluguéis: []
             }
-        })
-        .catch(error => console.error('Erro ao buscar detalhes do carro:', error));
+        ];
+
+        // Encontrar o carro selecionado
+        const carroSelecionado = mockCarros.find(carro => carro.id == carroId);
+
+        // Simula um atraso como se estivesse aguardando a resposta do servidor
+        setTimeout(() => {
+            console.log('Resposta simulada do servidor:', carroSelecionado);
+
+            if (!carroSelecionado) {
+                alert('Carro não encontrado.');
+            } else {
+                exibirDetalhesDoCarro(carroSelecionado);
+            }
+        }); // 1 segundo de atraso
     });
 
     function formatarMoeda(valor) {
         return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
     }
 
-    function exibirDetalhesDoCarro(carro, aluguéis) {
+    function exibirDetalhesDoCarro(carro) {
         const container = document.getElementById('carroDetalhes');
         container.innerHTML = ''; // Limpar conteúdo anterior
 
@@ -37,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <p><strong>Placa:</strong> ${carro.placa}</p>
                 <p><strong>Diária:</strong> ${formatarMoeda(carro.diaria)}</p>
                 <p><strong>Disponibilidade:</strong> ${carro.disponibilidade}</p>
-                ${aluguéis.length > 0 ? `
+                ${carro.aluguéis.length > 0 ? `
                     <h3>Histórico de Aluguéis</h3>
                     <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
                         <thead>
@@ -48,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             </tr>
                         </thead>
                         <tbody>
-                            ${aluguéis.map(aluguel => `
+                            ${carro.aluguéis.map(aluguel => `
                                 <tr>
                                     <td style="border: 1px solid #ddd; padding: 8px;">${aluguel.data_inicio}</td>
                                     <td style="border: 1px solid #ddd; padding: 8px;">${aluguel.data_fim}</td>
@@ -58,9 +107,23 @@ document.addEventListener('DOMContentLoaded', () => {
                         </tbody>
                     </table>
                 ` : '<p style="margin-top: 20px;">Este carro ainda não foi alugado.</p>'}
-                <a href="/locadora_de_carros/src/views/home.php" style="display: block; text-align: center; margin-top: 20px; background-color: #333; color: #fff; padding: 10px; text-decoration: none; border-radius: 5px;">Voltar</a>
+                <a href="home.html" style="display: block; text-align: center; margin-top: 20px; background-color: #333; color: #fff; padding: 10px; text-decoration: none; border-radius: 5px;">Voltar</a>
             </div>
         `;
         container.innerHTML = detalhesHTML;
     }
+
+    // Preenche o seletor com os carros simulados
+    const mockCarros = [
+        { id: 1, modelo: 'Fusca', marca: 'Volkswagen' },
+        { id: 2, modelo: 'Gol', marca: 'Volkswagen' },
+        { id: 3, modelo: 'Civic', marca: 'Honda' }
+    ];
+
+    mockCarros.forEach(carro => {
+        const option = document.createElement('option');
+        option.value = carro.id;
+        option.textContent = `${carro.modelo} - ${carro.marca}`;
+        carroIdSelect.appendChild(option);
+    });
 });

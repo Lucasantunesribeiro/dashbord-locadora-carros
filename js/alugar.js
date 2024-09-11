@@ -6,31 +6,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const formData = new FormData(form);
 
-        fetch('/locadora_de_carros/src/routes/api/alugar_carro.php', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => {
-            const contentType = response.headers.get('content-type');
-            if (contentType && contentType.includes('application/json')) {
-                return response.json();
-            } else {
-                return response.text().then(text => {
-                    throw new Error('Resposta inesperada: ' + text);
-                });
-            }
-        })
-        .then(data => {
-            if (data.success) {
-                alert('Aluguel realizado com sucesso!');
+        // Simulação da resposta do servidor
+        const mockResponse = {
+            success: true, // ou false para simular um erro
+            message: 'Aluguel realizado com sucesso!'
+        };
+
+        // Simula um atraso como se estivesse aguardando a resposta do servidor
+        setTimeout(() => {
+            console.log('Resposta simulada do servidor:', mockResponse);
+
+            if (mockResponse.success) {
+                alert(mockResponse.message);
                 form.reset();
             } else {
-                alert('Erro: ' + data.message);
+                alert('Erro: ' + mockResponse.message);
             }
-        })
-        .catch(error => {
-            console.error('Erro ao realizar o aluguel:', error);
-            alert('Erro ao realizar o aluguel. Por favor, tente novamente.');
-        });
+        }); // 1 segundo de atraso
     });
 });
